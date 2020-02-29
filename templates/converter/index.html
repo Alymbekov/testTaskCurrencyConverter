@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</head>
+<body>
+<div class="header gradient-primary d-flex flex-column align-items-center justify-content-center pt-5">
+
+    <form class="converter-form form-group d-flex flex-column align-items-center" action="https://api.frankfurter.app/latest" method="post">
+
+        {#        {% csrf_token %}#}
+        <div class="d-flex flex-wrap">
+            <div class="input-group my-2">
+                <input class="custom-select rounded-pill border-0 w-100 px-2 py-1" type="text" pattern="^[0-9]+$" name='amount' placeholder="Write the quantity" required>
+                <span></span>
+            </div>
+            <div class="input-group my-2">
+                <select class="custom-select select-currency in_data rounded-pill border-0 w-100 px-2 py-1" name="from">
+                    <option selected value="">EUR - Euro</option>
+                </select>
+                <span></span>
+            </div>
+            <div class="input-group my-2">
+                <select class="custom-select select-currency out_data rounded-pill border-0 w-100 px-2 py-1" name="to">
+                    <option selected value="">All</option>
+                </select>
+                <span></span>
+            </div>
+        </div>
+        <button class="btn btn-pill btn-outline-light" type="submit">
+            Click
+        </button>
+    </form>
+
+    <div class="table-responsive col-md-10">
+        <table class="table vl-custom-table">
+            <thead class="text-light">
+                <tr>
+                    <th>Currency</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody class="table-body">
+            </tbody>
+            <caption>
+                <h6 class="text-light text-right table-date"></h6>
+            </caption>
+        </table>
+    </div>
+
+</div>
+
+{#{{ result }}#}
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
